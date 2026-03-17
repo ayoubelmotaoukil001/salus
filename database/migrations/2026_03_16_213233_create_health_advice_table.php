@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('health_advice', function (Blueprint $table) {
+        Schema::create('health_advices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->text('advice');
+            $table->json('symptoms_used'); 
+            $table->timestamp('generated_at');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('health_advice');
+        Schema::dropIfExists('health_advices');
     }
 };

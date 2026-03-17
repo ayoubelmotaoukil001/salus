@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name') ;
+            $table->string("specialty") ;
+            $table ->string('city') ;
+            $table->integer('years_of_experience') ;
+            $table->decimal('consultation_price') ;
+            $table->json('available_days') ;
         });
     }
 

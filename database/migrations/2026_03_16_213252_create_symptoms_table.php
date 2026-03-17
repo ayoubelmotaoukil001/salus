@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->enum('severity', ['mild', 'moderate', 'severe']);
+            $table->text('description')->nullable();
+            $table->dateTime('date_recorded');
+            $table->text('notes')->nullable();
             $table->timestamps();
-        });
-    }
+        });    }
 
     /**
      * Reverse the migrations.

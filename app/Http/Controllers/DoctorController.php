@@ -13,4 +13,8 @@ class DoctorController extends Controller
         $doctors= Doctor::all()  ;
         return $this->success($doctors ,"Doctors retrieved successfully" ) ;
     }
+    public function show(Doctor $doctor)
+{
+    return $this->success($doctor, 'Doctor details retrieved successfully');
+}
 }

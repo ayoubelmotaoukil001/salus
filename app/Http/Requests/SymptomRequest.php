@@ -20,12 +20,14 @@ class SymptomRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-        public function rules(): array
+            public function rules(): array
     {
         return [
-            'name'        => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
+            'severity' => ['required', 'in:mild,moderate,severe'],
             'description' => ['nullable', 'string'],
-            'severity'    => ['required', 'in:low,medium,high'],
+            'date_recorded' => ['required', 'date'],
+            'notes' => ['nullable', 'string']
         ];
-    }
+}
 }
